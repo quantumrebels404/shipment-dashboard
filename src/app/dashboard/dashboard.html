@@ -1,0 +1,55 @@
+<div class="p-4 max-w-screen-xl mx-auto">
+
+  <!-- Header -->
+  <h1 class="text-center text-3xl font-bold text-yellow-400 mb-6">SHIPMENT DASHBOARD</h1>
+
+  <!-- Summary Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div class="bg-[#3b2f2f] p-6 rounded-xl shadow-md text-center">
+      <div class="text-sm">TOTAL SHIPMENTS</div>
+      <div class="text-3xl font-bold">{{ totalShipments | number }}</div>
+    </div>
+    <div class="bg-[#3b2f2f] p-6 rounded-xl shadow-md text-center">
+      <div class="text-sm">IN PROGRESS</div>
+      <div class="text-3xl font-bold">{{ inProgress }}</div>
+    </div>
+    <div class="bg-[#3b2f2f] p-6 rounded-xl shadow-md text-center">
+      <div class="text-sm">NOT PICKED</div>
+      <div class="text-3xl font-bold">{{ notPicked }}</div>
+    </div>
+    <div class="bg-[#3b2f2f] p-6 rounded-xl shadow-md text-center">
+      <div class="text-sm">DELAYED</div>
+      <div class="text-3xl font-bold">{{ delayed }}</div>
+    </div>
+  </div>
+
+  <!-- Period Selector -->
+  <div class="flex justify-end mb-4">
+    <select class="bg-[#3b2f2f] text-yellow-300 border border-yellow-400 px-4 py-2 rounded"
+            [(ngModel)]="currentPeriod" (change)="onPeriodChange($event)">
+      <option value="day">Day</option>
+      <option value="month">Month</option>
+      <option value="year">Year</option>
+    </select>
+  </div>
+
+  <!-- Charts -->
+ <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+  <!-- Bar Chart -->
+  <div class="bg-[#3b2f2f] p-4 rounded-xl shadow-md w-full">
+    <h2 class="text-yellow-300 text-lg mb-2">Shipment Volume Over Time</h2>
+    <div class="relative w-full overflow-x-auto">
+      <canvas id="lineChart" class="w-full max-h-[300px]"></canvas>
+    </div>
+  </div>
+
+  <!-- Doughnut Chart -->
+  <div class="bg-[#3b2f2f] p-4 rounded-xl shadow-md w-full">
+    <h2 class="text-yellow-300 text-lg mb-2">Current Shipment Status</h2>
+    <div class="relative w-full overflow-x-auto">
+      <canvas id="doughnutChart" class="w-full max-h-[300px]"></canvas>
+    </div>
+  </div>
+</div>
+
+</div>

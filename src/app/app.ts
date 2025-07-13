@@ -1,12 +1,14 @@
+import { NgChartsModule } from 'ng2-charts';
+import { DashboardComponent } from './dashboard/dashboard';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
+  standalone: true,
+  imports: [
+    DashboardComponent,
+    NgChartsModule  // ✅ Make sure this is here
+  ],
+  templateUrl: './app.html'
 })
-export class App {
-  protected title = 'shipment-dashboard';
-}
+export class AppComponent {}
